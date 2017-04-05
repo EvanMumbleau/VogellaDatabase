@@ -1,10 +1,18 @@
 package css.evanmumbleau.vogelladatabase;
 
+import android.app.ListActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+
 import java.util.List;
 import java.util.Random;
 
-import android.app.ListActivity;
+
 import android.os.Bundle;
+import java.util.List;
+import java.util.Random;
+import android.app.ListActivity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 
@@ -35,6 +43,7 @@ public class TestDatabaseActivity extends ListActivity {
         ArrayAdapter<Comment> adapter = (ArrayAdapter<Comment>) getListAdapter();
         Comment comment = null;
         switch (view.getId()) {
+            //to add a new comment to the list
             case R.id.add:
                 String[] comments = new String[] { "Cool", "Very nice", "Hate it" };
                 int nextInt = new Random().nextInt(3);
@@ -42,6 +51,8 @@ public class TestDatabaseActivity extends ListActivity {
                 comment = datasource.createComment(comments[nextInt]);
                 adapter.add(comment);
                 break;
+
+            //To delete a comment from a list
             case R.id.delete:
                 if (getListAdapter().getCount() > 0) {
                     comment = (Comment) getListAdapter().getItem(0);
@@ -55,11 +66,13 @@ public class TestDatabaseActivity extends ListActivity {
 
     @Override
     protected void onResume() {
+        //IF DATABASE HAD BEEN PAUSED, IT OPENS
         datasource.open();
         super.onResume();
     }
 
     @Override
+    //CLOSES THE DATABASE TEMPORARILY
     protected void onPause() {
         datasource.close();
         super.onPause();

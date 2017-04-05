@@ -26,18 +26,25 @@
     </LinearLayout>
 
     <EditText
-        android:layout_width="match_parent"
+        android:id="@+id/editText"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:layout_alignLeft="@+id/button"
+        android:layout_below="@+id/textView"
+        android:layout_marginTop="61dp"
         android:ems="10"
-        android:id="@+id/COLUMN_RATING"
-        android:hint="Enter Rating" />
+        android:inputType="text"
+        android:hint="Enter a value between 1 and 5" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="18dp"
+        android:text="Enter a rating" />
 
     <ListView
         android:id="@android:id/list"
